@@ -17,8 +17,8 @@ import org.testng.annotations.Test;
 public class Test1 {
 
     public WebDriver driver;
+
     public int time = 30;
-    
 
     @BeforeClass
     public void setup() {
@@ -45,13 +45,13 @@ public class Test1 {
         waitForVisibilityOf(By.cssSelector("g[class='blocklyDraggable']"));
         WebElement draggable = driver.findElement(By.cssSelector("g[class='blocklyDraggable']"));
         action.dragAndDropBy(draggable, 569, 403).build().perform();
-        //action.dragAndDropBy(draggable, 569, 413).build().perform();
+        // action.dragAndDropBy(draggable, 569, 413).build().perform();
         driver.findElement(By.id("run_button")).click();
         waitForVisibilityOf(By.cssSelector(".close"));
         String success = driver.findElement(By.cssSelector(".modal-title.ng-binding")).getText();
         assertEquals(success, "Mission Accomplished");
         driver.findElement(By.id("check_answer_button")).click();
-        //Journey 2
+        // Journey 2
         waitForVisibilityOf(By.xpath(".//*[@id='page-wrapper']/div/div/div[2]/div/a"));
         driver.findElement(By.xpath(".//*[@id='page-wrapper']/div/div/div[2]/div/a")).click();
         Thread.sleep(2000);
@@ -66,12 +66,20 @@ public class Test1 {
         String success1 = driver.findElement(By.cssSelector(".modal-title.ng-binding")).getText();
         assertEquals(success1, "Mission Accomplished");
         driver.findElement(By.id("check_answer_button")).click();
+        // journey 3
+        waitForVisibilityOf(By.xpath(".//*[@id='page-wrapper']/div/div/div[2]/div/a"));
+        driver.findElement(By.xpath(".//*[@id='page-wrapper']/div/div/div[2]/div/a")).click();
+        Thread.sleep(2000);
+        waitForVisibilityOf(By.id("my_code"));
+        driver.findElement(By.id("my_code")).click();
 
     }
+
     @AfterClass
-    public void after(){
-        //driver.close();
+    public void after() {
+        // driver.close();
     }
+
     public void waitForVisibilityOf(final By locator) {
         final WebDriverWait wait = new WebDriverWait(driver, time);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
