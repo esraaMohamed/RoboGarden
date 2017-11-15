@@ -2,6 +2,8 @@ package freelance.Robogarden;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -72,7 +74,14 @@ public class Test1 {
         Thread.sleep(2000);
         waitForVisibilityOf(By.id("my_code"));
         driver.findElement(By.id("my_code")).click();
-
+        waitForVisibilityOf(By.cssSelector("g[class='blocklyDraggable'"));
+        List<WebElement> elements = driver.findElements(By.cssSelector("g[class='blocklyDraggable'"));
+        System.out.println(elements.size());
+        
+        action.dragAndDropBy(elements.get(2), 569, 403).build().perform();
+        action.dragAndDropBy(elements.get(1), 569, 413).build().perform();
+        action.dragAndDropBy(elements.get(3), 559, 403).build().perform();
+        
     }
 
     @AfterClass
