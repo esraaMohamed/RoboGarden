@@ -43,6 +43,7 @@ public class Test1 {
         Thread.sleep(5000);
         waitForVisibilityOf(By.xpath("html/body/div[2]/div/div[2]/section[2]/div/div[2]/div[1]/div/div[2]/div[2]/button[1]"));
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 600);");
+        Thread.sleep(5000);
         driver.findElement(By.xpath("html/body/div[2]/div/div[2]/section[2]/div/div[2]/div[1]/div/div[2]/div[2]/button[1]")).click();
         waitForVisibilityOf(By.xpath(".//*[@id='page-wrapper']/div/div/div[2]/div/a"));
         driver.findElement(By.xpath(".//*[@id='page-wrapper']/div/div/div[2]/div/a")).click();
@@ -123,7 +124,17 @@ public class Test1 {
         action.dragAndDropBy(elements2.get(11), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y - 200).build().perform();
         action.dragAndDropBy(elements2.get(9), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y - 70).build().perform();
         action.dragAndDropBy(elements2.get(9), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y - 50).build().perform();
-
+        action.dragAndDropBy(elements2.get(11), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y - 120).build().perform();
+        action.dragAndDropBy(elements2.get(9), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y).build().perform();
+        action.dragAndDropBy(elements2.get(9), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y + 20).build().perform();
+        action.dragAndDropBy(elements2.get(9), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y + 40).build().perform();
+        action.dragAndDropBy(elements2.get(9), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y + 60).build().perform();
+        action.dragAndDropBy(elements2.get(9), elements2.get(8).getLocation().x - 50, elements2.get(8).getLocation().y + 80).build().perform();
+        driver.findElement(By.id("run_button")).click();
+        waitForVisibilityOf(By.cssSelector(".close"));
+        String success4 = driver.findElement(By.cssSelector(".modal-title.ng-binding")).getText();
+        assertEquals(success4, "Mission Accomplished");
+        driver.findElement(By.id("check_answer_button")).click();
     }
 
     @AfterClass
