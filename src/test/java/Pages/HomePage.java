@@ -26,11 +26,23 @@ public class HomePage {
     @FindBy(css = ".slick-dots>li")
     private WebElement slickDots;
     
-    @FindBy(id = "mission00")
-    private WebElement firstMission;
-    
     @FindBy(css = "div[class='unlocked_class zoom_in_hover']")
     private WebElement missions;
+    
+    @FindBy(css = ".close.ng-scope")
+    private WebElement missionTutorial;
+    
+    @FindBy(id = "actions")
+    private WebElement actions;
+    
+    @FindBy(id = "modelanswer")
+    private WebElement modelAnswer;
+    
+    @FindBy(id = "run_button")
+    private WebElement runButton;
+    
+    @FindBy(id = "check_answer_button")
+    private WebElement checkAnswerButton;
     
 
 }
